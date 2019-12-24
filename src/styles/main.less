@@ -6,13 +6,11 @@ Import another styles from less files using @import "[NAME_OF_FILE].less"
 
 @import "reset.less";
 
-
 @bgColor: #16a086;
 @divBg: white;
 @headerColor: white;
 @divText: #444444;
-@family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
+@family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 
 .baseBodyStyles() {
   height: 100vh;
@@ -30,7 +28,7 @@ Import another styles from less files using @import "[NAME_OF_FILE].less"
 body {
   .flex(column);
   .baseBodyStyles();
-   background: @bgColor;
+  background: @bgColor;
   header {
     width: 100%;
     display: flex;
@@ -41,13 +39,13 @@ body {
     margin: 20px 0;
     .header-title {
       color: @headerColor;
-      font-size: 30px;
+      font-size: 25px;
       font-family: @family;
     }
     .header-content {
       color: @headerColor;
       font-family: @family;
-      font-size: 15px;
+      font-size: 14px;
     }
   }
   .flex-row-wrap {
@@ -57,16 +55,37 @@ body {
     max-width: 780px;
 
     .div-wrapper {
-      img {
-        width: 100%;
-        height: 54.76%;
+      .popup-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         cursor: pointer;
+        &:hover {
+          .pop-up {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+          }
+        }
+
+        .pop-up {
+          width: 180px;
+          height: 50px;
+          background: #16a08685;
+          position: absolute;
+          display: none;
+          img {
+            height: 25px;
+          }
+        }
       }
+
       .name {
         margin-top: 20px;
         font-size: 18px;
         font-weight: 500;
       }
+
       .role {
         font-style: italic;
         font-size: 13px;
@@ -78,15 +97,14 @@ body {
         line-height: 20px;
         font-size: 15px;
       }
-     display: flex;
-     font-family: @family;
-     flex-direction: column;
-     width: 220px;
-     height: 420px;
-     background: @divBg;
-     color: @divText;
-     align-items: center;
+      display: flex;
+      font-family: @family;
+      flex-direction: column;
+      width: 220px;
+      height: 420px;
+      background: @divBg;
+      color: @divText;
+      align-items: center;
     }
-
   }
 }
