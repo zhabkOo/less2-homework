@@ -3,58 +3,90 @@ Write all less code in this file
 Import another styles from less files using @import "[NAME_OF_FILE].less"
 */
 // Example styles
-@font-face {
-  font-family: "christmas";
-  src: url("../fonts/christmaseve.ttf");
-}
 
-@bgColor: grey;
-@headerColor: #373333;
+@import "reset.less";
 
-@size: 40px;
-@family: "christmas";
+
+@bgColor: #16a086;
+@divBg: white;
+@headerColor: white;
+@divText: #444444;
+@family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
 
 .baseBodyStyles() {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
-  margin: 0;
-  padding: 0;
 }
 
 .flex(@direction) {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: @direction;
 }
 
 body {
   .flex(column);
   .baseBodyStyles();
-  background: @bgColor;
-
-  & > * {
-    font-size: @size;
+   background: @bgColor;
+  header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100px;
+    margin: 20px 0;
+    .header-title {
+      color: @headerColor;
+      font-size: 30px;
+      font-family: @family;
+    }
+    .header-content {
+      color: @headerColor;
+      font-family: @family;
+      font-size: 15px;
+    }
   }
-  & img {
-    border: 0.5px solid rgba(0, 0, 0, 0.5);
-    height: 250px;
-    width: 500px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 21px 30px #5c5656;
-  }
+  .flex-row-wrap {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 780px;
 
-  & h1 {
-    .flex(row);
-    font-family: @family;
-    color: @headerColor;
-  }
-}
+    .div-wrapper {
+      img {
+        width: 100%;
+        height: 54.76%;
+        cursor: pointer;
+      }
+      .name {
+        margin-top: 20px;
+        font-size: 18px;
+        font-weight: 500;
+      }
+      .role {
+        font-style: italic;
+        font-size: 13px;
+        margin: 6px 0 21px 0;
+      }
+      .description {
+        text-align: left;
+        margin: 0 10px;
+        line-height: 20px;
+        font-size: 15px;
+      }
+     display: flex;
+     font-family: @family;
+     flex-direction: column;
+     width: 220px;
+     height: 420px;
+     background: @divBg;
+     color: @divText;
+     align-items: center;
+    }
 
-.main_body {
-  &_text {
-    font-size: 35px;
-    font-family: @family;
   }
 }
