@@ -35,16 +35,14 @@ body {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    height: 100px;
+    min-height: 100px;
     margin: 20px 0;
+    color: @headerColor;
+    font-family: @family;
     .header-title {
-      color: @headerColor;
       font-size: 25px;
-      font-family: @family;
     }
     .header-content {
-      color: @headerColor;
-      font-family: @family;
       font-size: 14px;
     }
   }
@@ -53,8 +51,15 @@ body {
     justify-content: space-between;
     width: 100%;
     max-width: 780px;
-
     .div-wrapper {
+      display: flex;
+      font-family: @family;
+      flex-direction: column;
+      max-width: 220px;
+      height: 420px;
+      background: @divBg;
+      color: @divText;
+      align-items: center;
       .popup-wrapper {
         display: flex;
         justify-content: center;
@@ -62,20 +67,27 @@ body {
         cursor: pointer;
         &:hover {
           .pop-up {
-            display: flex;
-            align-items: center;
-            justify-content: space-evenly;
+            opacity: 1;
           }
         }
-
         .pop-up {
+          align-items: center;
+          justify-content: space-evenly;
+          display: flex;
           width: 180px;
           height: 50px;
           background: #16a08685;
           position: absolute;
-          display: none;
+          opacity: 0;
+          transition: opacity 0.5s ease-out;
           img {
             height: 25px;
+            padding: 0 5px;
+            &:hover {
+              animation-duration: 0.25s;
+              animation-iteration-count: 2;
+              animation-name: iconRotation;
+            }
           }
         }
       }
@@ -105,6 +117,44 @@ body {
       background: @divBg;
       color: @divText;
       align-items: center;
+    }
+  }
+}
+
+@keyframes iconRotation {
+  from {
+    transform: rotate(-45deg);
+  }
+  to {
+    transform: rotate(45deg);
+  }
+}
+
+@media (min-width: 468px) and (max-width: 768px) {
+  body {
+    overflow-y: unset;
+    .flex-row-wrap {
+      flex-wrap: wrap;
+      width: 100%;
+      max-width: 655px;
+      justify-content: space-evenly;
+    }
+    .div-wrapper:nth-child(3n) {
+      margin-top: 10%;
+      align-self: center;
+    }
+  }
+}
+
+@media (max-width: 468px) {
+  body {
+    overflow-y: unset;
+    .flex-row-wrap {
+      flex-direction: column;
+      align-items: center;
+    }
+    .div-wrapper {
+      margin-bottom: 25px;
     }
   }
 }
